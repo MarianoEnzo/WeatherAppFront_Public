@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="../styles/normalize.css">
+    <link rel="stylesheet" href="../styles/mainPageStyle.css">
+
+    <link rel="shortcut icon" href="#">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.1"></script>
+    <script  src="../src/main.js"></script>
+    <script src="../src/weatherAPI.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script onload=""
+        src="https://maps.googleapis.com/maps/api/js?key=GOOGLEKEY&callback=initMap&libraries=places"></script>
+
+    <script src="https://kit.fontawesome.com/bc51615171.js" crossorigin="anonymous"></script>
+
+</head>
+
+<!-- <body onload="makeAutoComplete()"> -->
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div class="home">
+        <section class="languaje">
+            <a href="index.html">Español<img class="languajeIcon" src="../imgs/lenguaje_es.png"></a>
+            <a href="index_en.html">English <img class="languajeIcon" src="../imgs/languaje_en.png"></a>
+        </section>
+
+        <h1>Ingrese un lugar para saber su pronostico!</h1>
+        <div class="weather__inputs_first">
+            <input id="input-home" type="text" class="input-city" placeholder="Ingresa una ciudad">
+            <button type="button" onclick="getWeatherFirstTime()"><i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="loader" style="display: none;">
+        </div>
+    </div>
+
+
+
+    <div class="app">
+
+
+
+        <main>
+            <div class="main-container">
+                <section class="weather">
+
+                    <div class="weather__inputs">
+                        <input id="input-app" type="text" class="input-city" placeholder="Ingresa una ciudad">
+                        <button type="button" onclick="getWeather()"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="weather_info">
+                        <div class="weater_info__icon">
+                            <h4 class="weather_description"></h4>
+                            <img src="" alt="" class="weather_img">
+
+                        </div>
+                        <div class="weather__info__main">
+                            <h4 class="temperature"></h4>
+                            <p class="feels_like"></p>
+                            <p class="max_temperature"></p>
+                            <p class="min_temperature"></p>
+                        </div>
+                        <div class="weather__info__Extra">
+                            <p class="wind_speed"></p>
+                            <p class="visibility"></p>
+                            <p class="pressure"></p>
+                            <p class="humidity"></p>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="forecast-container">
+
+                    <h2>Pronostico para los proximos 5 dias</h2>
+
+
+                    <div class="forecast">
+
+                        <div class="forecast__cards__container">
+                            <template class="forecast__card_template" id="forecast__card_template">
+                                <button class="forecast__card-button">
+                                    <div class="forecast__card">
+                                        <div class="card_firstColumn">
+                                            <p class="card_day"> </p>
+                                            <p class="card_dayNumber"></p>
+                                            <img class="card_image">
+                                        </div>
+
+                                        <div class="card_secondColum">
+                                            <p class="card_temperature"> <span>
+                                                </span></p>
+                                            <p class="card_weatherDescription"></p>
+                                            <p class="card_humedity"></p>
+                                            <p class="card_wind"></p>
+                                        </div>
+                                    </div>
+                                </button>
+                            </template>
+
+
+                        </div>
+                    </div>
+
+                    <p class="forcast__hourly__indication">Haga click en un dia para el desglose por horario</p>
+                    <div class="hourly__container">
+
+                        <template class="hourly__forecast__container" id="hourly__forecast_template">
+
+                            <div class="hourly_content">
+                                <h3 class="hourly__time"></h3>
+                                <div class="hourly__mainInfo"></div>
+                                <div class="hourly__extraInfo"></div>
+                            </div>
+
+                        </template>
+                    </div>
+                </section>
+            </div>
+
+
+
+
+    </div>
+    </main>
+
+    <footer class="footer">
+        <p> Todos los derechos reservados Mariano Enzo Quiroga</p>
+        <a href="https://github.com/MarianoEnzo/WeatherApp" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/mariano-quirogaweb/" target="_blank">Linkedlin</a>
+        <a href="" target="_blank">Cv</a>
+
+    </footer>
+
+
+    </div>
+
+</body>
+
+
+</html>
