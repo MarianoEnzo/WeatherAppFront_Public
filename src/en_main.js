@@ -58,6 +58,17 @@ const weatherApi = {
   async function getWeatherFirstTime() {
     //Show the loader
     const place = $("#input-home").val();
+    const showAlert= (()=>{
+      toastr.info("The first time could take a few extra seconds, wait please", "", {
+        "toastClass": "toast"
+      });
+  
+    setTimeout(function() {
+      toastr.clear();
+    }, 5000);
+   
+    })
+    showAlert()
     $(".loader").show();
     //First, get the data from the backend
     Promise.all([
@@ -135,20 +146,15 @@ const weatherApi = {
   
   
   function listeners() {
-    console.log("llama listeners");
-    /* $(".input-city").on("keypress", function (e) {
-      if (e.keyCode === 13) {
-        getData();
-      }
-    });
-   */
+  
+    
     const buttons = document.querySelectorAll(".forecast__card-button");
-    console.log(buttons);
+
     buttons.forEach((button) => {
       button.addEventListener("click", function () {
         const div = this.querySelector(".forecast__card");
         const id = div.id;
-        console.log(id);
+   
         renderDifferentHourlyForecast(id);
       });
     });
@@ -216,7 +222,7 @@ const weatherApi = {
         forecastContainer.appendChild(clone);
       }
       listeners();
-      console.log("Termi9na el render Forecast");
+   
     } catch (error) {
       console.log(error);
     }

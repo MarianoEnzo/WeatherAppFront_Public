@@ -2,7 +2,7 @@ const weatherApi = {
   async getWeatherData(place) {
     try {
       const response = await fetch(
-        `https://weatherapp-j8vj.onrender.com/api/temperature/${place}/en`
+        `https://weatherapp-j8vj.onrender.com/api/temperature/${place}/es`
       );
 
       if (response.status == 200) {
@@ -18,7 +18,7 @@ const weatherApi = {
   async getForecast(place) {
     try {
       const response = await fetch(
-        `https://weatherapp-j8vj.onrender.com/api/forecast/${place}/en`
+        `https://weatherapp-j8vj.onrender.com/api/forecast/${place}/es`
       );
       const data = await response.json();
 
@@ -30,7 +30,7 @@ const weatherApi = {
   async getHourlyForecast(place) {
     try {
       const response = await fetch(
-        `https://weatherapp-j8vj.onrender.com/api/hourlyForecast/${place}/en`
+        `https://weatherapp-j8vj.onrender.com/api/hourlyForecast/${place}/es`
       );
 
       const data = await response.json();
@@ -59,6 +59,17 @@ function renderDifferentHourlyForecast(id) {
 async function getWeatherFirstTime() {
   //Show the loader
   const place = $("#input-home").val();
+  const showAlert= (()=>{
+    toastr.info("La primera vez puede tardar unos segundos extras, espere por favor", "", {
+      "toastClass": "toast"
+    });
+
+  setTimeout(function() {
+    toastr.clear();
+  }, 5000);
+ 
+  })
+  showAlert()
   $(".loader").show();
   //First, get the data from the backend
   Promise.all([
@@ -161,20 +172,15 @@ function renderWeather(weather) {
 }
 
 function listeners() {
-  console.log("llama listeners");
-  /* $(".input-city").on("keypress", function (e) {
-    if (e.keyCode === 13) {
-      getData();
-    }
-  });
- */
   const buttons = document.querySelectorAll(".forecast__card-button");
-  console.log(buttons);
+
+
+
   buttons.forEach((button) => {
     button.addEventListener("click", function () {
       const div = this.querySelector(".forecast__card");
       const id = div.id;
-      console.log(id);
+    
       renderDifferentHourlyForecast(id);
     });
   });
@@ -214,7 +220,7 @@ function renderForecast(forecast) {
       forecastContainer.appendChild(clone);
     }
     listeners();
-    console.log("Termi9na el render Forecast");
+  
   } catch (error) {
     console.log(error);
   }
