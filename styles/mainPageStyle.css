@@ -54,9 +54,7 @@ html {
     align-items: center;
 }
 
-@media (min-width: 768px) {
-    .home {}
-}
+
 
 .home h1 {
     text-align: center;
@@ -132,9 +130,13 @@ html {
 
 @media only screen and (max-width: 480px) {
     .home {
-        height: auto;
-        width: auto;
+        height: 100%;
+        width: 100%;
     }
+    .weather__inputs_first {
+                width: 100%;
+    }
+
 }
 
 /* @media (max-width: 768px) {
@@ -247,6 +249,9 @@ footer {
     .weather h4 {
         font-size: 1.8rem !important;
     }
+    .weather img{
+        width: 100px;
+    }
 }
 
 .weather__inputs {
@@ -343,6 +348,7 @@ footer {
         width: 100%;
     }
 }
+
 .forecast__cards__container {
 
 
@@ -357,6 +363,11 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+@media screen and (max-width:480px ) {
+    .forecast__cards__container{
+     grid-template-columns: repeat(1,1fr);
+    }
+  }
 
 .forecast-container h2 {
     font-size: 3rem;
@@ -490,6 +501,12 @@ footer {
     width: 60%;
     margin: 30px auto;
 }
+@media (max-width:480px ) {
+   .hourly__container{
+    width: 100%;
+    margin: 0;
+   }
+ }
 
 .hourly__time {
     font-size: 2.5rem;
